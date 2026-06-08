@@ -1,74 +1,55 @@
 ---
 name: prism-scan
-description: "单轮结构化分析 — 动态生成最优认知透镜，执行深度结构分析。发现守恒律、结构不变量和具体缺陷。读取 .prism-history.md 学习历史盲点。适用于任何代码文件、系统设计或文本 artifact。"
-version: 1.1.0
-tags: [analysis, structural, lens, prism]
+description: "Structural analysis through dynamically generated cognitive lenses. Generates the optimal analytical lens for the specific code/artifact, then executes it. Finds conservation laws, structural invariants, and concrete bugs that vanilla analysis misses. Use on any code file, system design, or text artifact."
 allowed-tools: ["Read"]
 ---
 
-# Prism Scan — 动态认知透镜的结构分析
+# Prism Scan — Structural Analysis via Dynamic Cognitive Lenses
 
-你必须执行**两个步骤**。都是强制的，不可跳过。
+You perform TWO steps. Both are mandatory. Do not skip either.
 
-## STEP 0: 检查历史约束知识（持续学习）
+## STEP 0: Check for prior constraint knowledge (growth)
 
-在当前项目目录查找 `.prism-history.md` 文件。该文件可能存在也可能不存在——不存在是正常的（说明这是该项目首次分析，直接进入 Step 1）。
+Look for a `.prism-history.md` file in the current project directory. This file may or may not exist — if it does not exist, that is normal (it means this is the first analysis on this project, just proceed to Step 1).
 
-如果文件**存在**：读取它。它包含以往 `/prism-reflect` 分析的约束报告——过去的分析最大化/牺牲了什么，留下哪些盲点。利用这个历史指导透镜生成：如果历史分析持续牺牲时间维度，就让新透镜偏向时间维度。
+If the file DOES exist, read it. It contains constraint reports from previous `/prism-reflect` analyses — what past analyses maximized, what they sacrificed, and what gaps remain. Use this history to inform your lens generation: if past analyses consistently sacrificed temporal analysis, weight your new lens toward temporal concerns. The agent grows by not repeating the same blind spots.
 
-**容错规则：**
-- 如果文件存在但格式损坏无法解析 → 忽略它，记录「⚠️ .prism-history.md 格式异常，已跳过」，继续 Step 1
-- 如果文件有同 artifact 的冗余条目 → 只取最新一条
-- 任何情况下都不能因为读历史文件失败而中断分析
+## STEP 1: Cook the lens
 
-## STEP 1: 炼制透镜
+You are a lens generator. Read the artifact the user provided. Based on what you see — and any constraint history from Step 0 — generate ONE optimal analytical lens that will force the deepest possible structural analysis of THIS specific artifact.
 
-你是透镜生成器。阅读用户提供的 artifact。基于所见内容——以及 Step 0 的约束历史——生成**一个**最优分析透镜，强制对**该特定 artifact** 进行最深的结构分析。
+Study these scored examples of excellent lenses:
 
-参考评分实例：
+SCORED 9.5/10: "Identify every explicit choice this artifact makes. For each, name the alternative it invisibly rejects. Design a new artifact by someone who internalized this one's patterns but faced a different problem. Trace which transferred patterns create silent problems. Name the pedagogy law."
 
-**评分 9.5/10:** "找出此 artifact 做出的每一个显性选择。为每个选择命名它无形中拒绝的替代方案。设计一个新的 artifact——由内化了这些模式但面对不同问题的人创建。追踪哪些迁移过来的模式悄悄制造问题。命名教学法则。"
+SCORED 9/10: "Extract every empirical claim this artifact embeds. For each, assume it is false. Trace the corruption. Build three alternatives, each inverting one claim. Predict which false claim causes the slowest, most invisible failure."
 
-**评分 9/10:** "提取此 artifact 嵌入的每个经验性主张。假设每个都为假。追踪腐败链条。构建三个替代方案，每个反转一个主张。预测哪个错误主张导致最慢、最不可见的失败。"
+SCORED 9/10: "Run this artifact forward through 3 maintenance cycles. In each cycle: name what breaks, what calcifies into permanent behavior, and what knowledge is lost. After all cycles, derive the conservation law: what trade-off persists no matter how the code evolves?"
 
-**评分 9/10:** "将此 artifact 向前运行 3 个维护周期。每个周期中：命名什么会崩溃，什么会钙化为永久行为，什么知识会丢失。所有周期后：推导守恒律——无论代码如何演化都持续存在的权衡。"
+Your lens must:
+- Be specific to what you observe in this artifact (not generic)
+- If the user specified a FOCUS (e.g., "focusing on security" or "with emphasis on performance"), tailor the lens to that direction while still forcing structural depth
+- Force construction (build something, then diagnose what the construction reveals)
+- End with concrete outputs (bugs, laws, predictions — not just observations)
+- Be 75-200 words (minimum 75 — below this, models enumerate instead of analyze)
 
-你的透镜必须：
-- 基于在此 artifact 中观察到的**具体内容**（非泛泛）
-- 如果用户指定了**焦点**（如「聚焦安全」或「强调性能」），朝该方向定制透镜，同时仍强制结构深度
-- **强制构建**（构建某物，然后诊断该构建揭示了什么）
-- 以具体输出收尾（缺陷、法则、预测——不只是观察）
-- **75-200 字**（最少 75 字——低于此模型会只枚举而不分析）
+Output your lens under the heading "## Generated Lens" — show it so the user can see what was cooked.
 
-在标题 `## 生成的透镜` 下输出透镜——让用户看到炼出了什么。
+## STEP 2: Execute the lens
 
-## STEP 2: 执行透镜
+Now execute your generated lens against the artifact. Follow every instruction in the lens. Output the complete analysis. Do not summarize, do not ask permission, do not skip steps.
 
-现在对 artifact 执行你生成的透镜。遵循透镜中的每一条指令。输出完整分析。不总结、不请求许可、不跳过步骤。
+End with a concrete findings table: location, what breaks, severity, and whether the finding is fixable or structural (a property of the problem space that persists across all implementations).
 
-### 每个发现必须标注证据等级：
-
-| 标记 | 含义 |
-|:---|:----|
-| 🔵 **可查证** | 代码/artifact 中有具体片段可验证 |
-| 🟡 **模式推断** | 从多处代码模式交叉验证得出 |
-| 🟠 **推演假设** | 基于结构逻辑推理，但需更多数据确认 |
-| 🔴 **经验判断** | 无直接证据，凭专业经验 |
-
-每个结论后标注 `📊 证据等级：🔵/🟡/🟠/🔴`。
-
-以具体发现表收尾：位置、什么会崩溃、严重度、是否可修复还是结构性（问题空间的属性，在所有实现中持续存在）。
-
-发现表后追加约束 footer：
+After the findings table, append a brief constraint footer:
 
 ```
 ---
-约束说明：此分析最大化了 [你的透镜聚焦的内容]。
-未检查的维度：[1-2 个具体的替代角度]。
-深入分析：/prism-full | 元分析：/prism-reflect
+CONSTRAINT NOTE: This analysis maximized [what your lens focused on].
+It did not examine: [1-2 specific alternative angles].
+For deeper analysis: /prism-full | For meta-analysis: /prism-reflect
 ```
 
-## 注意事项
+## Reliability Note
 
-- **单次执行**：在一次响应中完成完整分析，不要分成多轮。
-- **证据门禁**：如果超过 50% 的结论是 🔴，需声明「本分析可靠性有限，建议用 prism-full 做多轮验证」。
+For guaranteed single-shot execution (no agentic loops), use `--tools ""` flag when running via Claude CLI. This ensures the model executes the full analysis in one response rather than splitting into multiple turns.

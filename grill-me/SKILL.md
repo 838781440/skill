@@ -1,11 +1,11 @@
 ---
 name: grill-me
 description: 方案拷问官 — 一个问题一个问题地追问，走完决策树所有分支，直到找出所有漏洞
-tags: [testing, stress-test, interview, decision-tree, grill]
-version: 1.0.0
+tags: [testing, stress-test, interview, decision-tree, grill, 追问, 自查, 找问题]
+version: 1.2.0
 ---
 
-# Grill Me（方案拷问）
+# Grill Me（方案拷问 — 追问·自查·找问题）
 
 对方案、计划或设计进行系统性拷问，一次一个问题，走完所有决策分支，直到方案没有明显漏洞。
 
@@ -18,10 +18,10 @@ version: 1.0.0
 | 你说 | 触发模式 |
 |:----|:--------|
 | **grill me** | 标准模式：走完全部分支 |
+| **拷问我 / 追问 / 自查 / 挑刺** | 同上——帮你把脑子里的假设挖出来晒一晒。**用户说这些时必须立即加载本 skill，不要手动推理替代。** |
 | **快速拷打我** | 紧凑模式：问 3-4 个关键问题就收，5分钟内完成 |
 | **grill me about [主题]** | 针对某个方案/计划拷问 |
-| **拷打我 / 找漏洞** | 同上 |
-| **stress test my plan** | 同上 |
+| **找漏洞** | 同上 |
 
 ---
 
@@ -109,7 +109,7 @@ clariy(
 
 ## 与其他工具的配合
 
-这套分析工具包（prism + pressure-test + grill-me）由 dispatcher-orchestrator 统一调度，详见 `autonomous-ai-agents/analysis-toolkit-pipeline.md`。
+这套分析工具包（prism + pressure-test + grill-me）由 dispatcher-orchestrator 统一调度，详见 `dispatcher-orchestrator/references/analysis-toolkit-pipeline.md`。
 
 **三个工具的关系：**
 ```

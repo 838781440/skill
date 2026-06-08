@@ -1,11 +1,3 @@
-﻿# ⚠️ 此文件已迁移
-#
-此文档已提升为共享流水线文档，位于 utonomous-ai-agents/analysis-toolkit-pipeline.md。
-# prism、pressure-test、grill-me 三个 skill 均引用共享版本。
-# 本文件保留为历史参考，不再更新。
-
----
-
 # 分析工具包流水线
 
 Dispatcher 在接到需要**深度分析+验证+查漏**的任务时，按此流水线调度：

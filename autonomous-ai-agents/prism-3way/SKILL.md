@@ -1,71 +1,45 @@
 ---
 name: prism-3way
-description: "三维正交分析 — WHERE（结构考古）/ WHEN（时间模拟）/ WHY（结构不可能性）+ 跨操作综合。每个操作从根本不同的角度攻击问题，三个操作之间的分歧本身就是有价值的输出。领域无关，适用于代码、商业、战略、设计、文本。"
-version: 1.1.0
-tags: [analysis, orthogonal, structural, temporal, synthesis, prism]
-allowed-tools: ["Read"]
+description: "Three orthogonal analytical operations (WHERE/WHEN/WHY) + cross-operation synthesis. Each operation attacks the problem from a fundamentally different angle. The disagreements between the three ARE the valuable output. Works on any domain — code, business, strategy, design, text."
 ---
 
-# Prism 3-Way — WHERE / WHEN / WHY + 综合
+# Prism 3-Way — WHERE / WHEN / WHY + Synthesis
 
-你对 artifact 执行**四个操作**。每个操作独立进行——不允许前序操作影响后续操作。最后的综合交联三者。
+You perform FOUR operations on the artifact. Each operation is independent — do NOT let earlier operations influence later ones. The synthesis at the end cross-references all three.
 
-## 操作 1：WHERE（结构考古）
+## OPERATION 1: WHERE (Structural Archaeology)
 
-逐层挖掘 artifact。从表面开始（立即可见的内容），挖到地基（一切所依赖的基础），然后检查层间沉积。
+Excavate the artifact layer by layer. Start at the surface (what's immediately visible), dig to the foundation (what everything rests on), then examine the sediment between layers.
 
-对每一层：命名可见的内容、它隐藏的内容、以及它所依赖的基础。找到**死模式**——曾经重要但已被替代的东西。找到**断层线**——不同时代的层在何处接合不良。推导该层的**守恒律**：什么权衡在所有层中持续存在？公式：A × B = 常数。
+For each layer: name what's visible, what it hides, and what it rests on. Find dead patterns — things that USED to matter but were replaced. Find fault lines — where layers from different eras meet badly. Derive the conservation law: what trade-off persists across ALL layers? Format: A × B = Constant.
 
-## 操作 2：WHEN（时间模拟）
+## OPERATION 2: WHEN (Temporal Simulation)
 
-将 artifact 向前运行 3-5 个具体变革周期（维护、增长、演进、外部压力）。对每个周期：
-- 什么会崩溃？
-- 什么会钙化成无人质疑的永久行为？
-- 什么知识会丢失？
+Run the artifact forward through 3-5 concrete cycles of change (maintenance, growth, evolution, external pressure). For each cycle:
+- What breaks?
+- What calcifies into permanent behavior that nobody questions?
+- What knowledge is lost?
 
-所有周期后：什么预测未经验证就变成了公认智慧？哪些新脆弱性是原始设计无法预见的？推导支配时间演化的**守恒律**。
+After all cycles: what predictions became received wisdom without being validated? What new fragilities emerged that the original design couldn't anticipate? Derive the conservation law governing temporal evolution.
 
-## 操作 3：WHY（结构不可能性）
+## OPERATION 3: WHY (Structural Impossibility)
 
-识别该 artifact 同时声称提供的三个理想属性。**证明**这三个属性不可能共存——展示最大化任意两个如何迫使牺牲第三个。
+Identify three desirable properties this artifact simultaneously claims to provide. Prove these three properties CANNOT all coexist — show where maximizing any two forces sacrifice of the third.
 
-设计一个能修复核心矛盾的改进。**证明**该改进在更深层次重现了问题。设计第二个改进。推导**守恒律**：在所有改进尝试中持续存在的结构不变量。
+Engineer an improvement that would fix the core tension. Prove the improvement recreates the problem at a deeper level. Engineer a second improvement. Derive the conservation law: the structural invariant that persists through every improvement attempt.
 
-## 综合：跨操作整合
+## SYNTHESIS: Cross-Operation Integration
 
-现在交联所有三个操作。将发现分类为：
+Now cross-reference all three operations. Classify findings as:
 
-**结构确定性** — 三个操作**独立发现**的共同发现（这些是真实的）：
+**STRUCTURAL CERTAINTIES** — findings that ALL three operations independently discovered (these are real):
 
-**强信号** — 3 个操作中 2 个发现的：
+**STRONG SIGNALS** — findings from 2 of 3 operations:
 
-**独特视角** — 仅 1 个操作发现、另外 2 个在结构上不可能看到的：
+**UNIQUE PERSPECTIVES** — findings from only 1 operation that the other 2 are structurally incapable of seeing:
 
-对每个独特视角，解释其他操作为什么错过了它。
+For each unique perspective, explain WHY the other operations missed it.
 
-### 所有结论必须标注证据等级：
+Derive the META-conservation law: what is the relationship between the three conservation laws you found? Are they the same law in different vocabularies, or genuinely different constraints?
 
-| 标记 | 含义 |
-|:---|:----|
-| 🔵 **三维验证** | 至少 2 个独立操作确认 |
-| 🟡 **单操作验证** | 1 个操作发现，综合阶段未否定 |
-| 🟠 **推演假设** | 跨操作逻辑推理 |
-| 🔴 **经验判断** | 无直接证据 |
-
-推导**元守恒律**：你找到的三个守恒律之间的关系是什么？它们是同一法则在不同词汇中的表述，还是真正不同的约束？
-
-以**唯一洞察**收尾——只有三维整合才能产生的洞察，任何单一分析都无法独立产生的东西。
-
-## 写入约束历史
-
-综合输出后，将本次分析的关键约束追加到项目 `.prism-history.md`：
-
-```
-### [ISO时间戳] — [artifact 名称] (prism-3way)
-- **元守恒律**：[从综合阶段提取]
-- **结构确定性** (3/3)：[三个操作共同确认的发现]
-- **独特视角**：[仅 1 操作发现的内容]
----
-```
-
-追加规则同 prism-reflect Phase 4：同 artifact 最多保留 3 条最新条目。
+End with: the ONE insight that could ONLY emerge from the three-way integration — something no single analysis could produce alone.

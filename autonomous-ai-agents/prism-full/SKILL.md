@@ -1,106 +1,54 @@
 ---
 name: prism-full
-description: "多轮深潜分析 — 自定义分析流水线 + 强制对抗性自我修正。设计专用分析轮次，链式执行，然后攻击自己的发现再进行综合。用于对重要代码或 artifact 做最大深度分析。"
-version: 1.1.0
-tags: [analysis, deep, multi-pass, adversarial, prism]
-allowed-tools: ["Read"]
+description: "Full Prism: multi-pass structural analysis with mandatory adversarial self-correction. Designs custom analytical passes, executes them with chaining, then attacks its own findings before synthesizing. Use for maximum depth on important code or artifacts."
 ---
 
-# Full Prism — 多轮分析 + 对抗性自我修正
+# Full Prism — Multi-Pass Analysis with Adversarial Self-Correction
 
-你必须执行**三个 Phase**。全部强制。
+You perform THREE phases. All are mandatory.
 
-## PHASE 1: 设计流水线
+## PHASE 1: Design the pipeline
 
-你是流水线架构师。阅读用户提供的 artifact。为该 artifact 设计专用分析轮次。
+You are a pipeline architect. Read the artifact the user provided. Design analytical passes specifically for THIS artifact.
 
-参考评分实例：
+Study these scored examples of excellent lenses:
 
-**评分 9.5/10:** "找出每一个显性选择。为每个命名它无形中拒绝的替代方案。设计一个新的 artifact——由内化了这些模式但面对不同问题的人创建。追踪哪些迁移过来的模式悄悄制造问题。命名教学法则。"
+SCORED 9.5/10: "Identify every explicit choice. Name the alternative each invisibly rejects. Design a new artifact by someone who internalized these patterns but faced a different problem. Trace which transferred patterns create silent problems. Name the pedagogy law."
 
-**评分 9/10:** "提取每个经验性主张。假设每个都为假。追踪腐败链条。构建三个替代方案，每个反转一个主张。预测哪个错误主张导致最慢、最不可见的失败。"
+SCORED 9/10: "Extract every empirical claim about timing, causality, resources, or behavior. Assume each is false. Trace the corruption. Build three alternatives inverting one claim each. Predict which false claim causes the slowest, most invisible failure."
 
-设计 2-4 个分析轮次。规则：
-- 第一轮分析原始 artifact
-- 每后续轮接收 artifact **加** 所有之前的分析
-- 每轮 75-200 字压缩分析指令
-- 每轮必须**强制构建**（构建某物，然后诊断该构建揭示了什么）
+Design 2-4 analytical passes. Rules:
+- The first pass analyzes the raw artifact
+- Each subsequent pass receives the artifact PLUS all previous analysis
+- Each pass is 75-200 words of compressed analytical instructions
+- Each pass must force construction (build something, then diagnose what the construction reveals)
 
-### 流水线模板（必须用此格式）
+Output your pipeline under "## Generated Pipeline" — show each pass with its role.
 
-```
-## 生成的流水线
+## PHASE 2: Execute the pipeline + MANDATORY adversarial pass
 
-### Pass 1：[角色/角度名称]
-- **输入**：原始 artifact
-- **指令**：[75-200 字的压缩分析指令]
-- **预期输出**：[发现 / 守恒律 / 缺陷]
+Execute every pass in order. For each:
+1. State which pass you are executing
+2. Execute the full instructions against the artifact (and for passes 2+, against all previous analysis)
+3. Output the complete analysis
 
-### Pass 2：[角色/角度名称]
-- **输入**：原始 artifact + Pass 1 输出
-- **指令**：[75-200 字]
-- **预期输出**：[...]
+**MANDATORY FINAL PASS — ADVERSARIAL:**
+After all your designed passes, execute one more pass that you did NOT design in Phase 1:
 
-...
-```
+Attack your own findings. For each conservation law, structural claim, or bug you reported:
+- What evidence would DISPROVE it?
+- Did you overclaim? (stated as structural when it's actually fixable)
+- Did you underclaim? (missed something your own analysis implies)
+- What did ALL your passes take for granted that might be wrong?
 
-在 `## 生成的流水线` 下输出流水线——依次展示每个 pass 及其角色。
+If you find overclaims, RETRACT them explicitly. If you find underclaims, ADD them.
 
-## PHASE 2: 执行流水线 + 强制对抗轮次
+## PHASE 3: Synthesis
 
-依次执行每个 pass。对每个：
-1. 说明正在执行哪个 pass
-2. 对 artifact（以及 pass 2+ 对之前所有分析）执行完整指令
-3. 输出完整分析
+Produce the final reconciled output:
 
-**强制末轮 — 对抗轮次：**
-
-在所有自定义轮次之后，执行一个你在 Phase 1 **没有设计**的额外轮次：
-
-攻击你自己的发现。对每个守恒律、结构主张、或报告的缺陷：
-
-| 检查项 | 判断标准 | 动作 |
-|:---|:----|:----|
-| **Overclaim？** | 使用了「总是」「从不」「根本」「本质」等绝对词，且未给出反例 | 降级为「倾向」或「典型模式」 |
-| **Underclaim？** | 你自己的分析暗示了某事物但你没有明确命名 | 补充命名 |
-| **证据不足？** | 主张仅依赖一轮分析或单一观测点 | 标记为「单次观测，需多轮验证」 |
-| **全部分析默认了什么？** | 所有 pass 共同接受的、未被质疑的前提 | 列出 1-2 个 |
-
-如果你发现 Overclaim，**明确撤回**。如果你发现 Underclaim，**追加补充**。
-
-### 所有发现必须标注证据等级：
-
-| 标记 | 含义 |
-|:---|:----|
-| 🔵 **多轮验证** | 至少 2 个独立 pass + 对抗轮次确认 |
-| 🟡 **单轮验证** | 一个 pass 发现，对抗轮次未否定 |
-| 🟠 **推演假设** | 基于逻辑推理，对抗轮次可正面也可反面 |
-| 🔴 **经验判断** | 无 artifact 内直接证据 |
-
-对抗轮次本身也必须按此格式标注。
-
-## PHASE 3: 综合
-
-产出最终协调输出：
-
-### 最终发现
-- **守恒律**：经受住对抗审查的结构属性
-- **撤回的主张**：对抗轮次否定了什么（如有）
-- **发现表**：每个具体问题——位置、什么会崩溃、严重度、可修复还是结构性。只有经受住对抗审查的发现才能进入此表。
-- **最深发现**：只有对抗轮次挑战了分析轮次后才变得可见的东西
-- **📊 整体证据评级**：🔵 N个 / 🟡 N个 / 🟠 N个 / 🔴 N个。若 🔴 占比 > 50%，声明「整体可靠性有限」
-
-## PHASE 4: 写入约束历史
-
-综合输出后，将本次分析的关键约束追加到项目 `.prism-history.md`：
-
-```
-### [ISO时间戳] — [artifact 名称] (prism-full)
-- **发现的守恒律**：[从最终发现提取]
-- **撤回内容**：[对抗轮次撤回的内容或 "无"]
-- **对抗轮次发现的盲点**：[所有 pass 共同默认了什么]
-- **推荐后续**：[/prism-reflect 或具体关注方向]
----
-```
-
-若 `.prism-history.md` 已存在，**追加**。若不存在，创建带 `# Prism 约束历史` 头部的新文件。
+### Final Findings
+- **Conservation law**: The structural property that survives adversarial scrutiny
+- **Retracted claims**: What the adversarial pass disproved (if any)
+- **Findings table**: Every concrete issue — location, what breaks, severity, fixable or structural. Only findings that survived adversarial review.
+- **Deepest finding**: What became visible ONLY because the adversarial pass challenged the analytical passes

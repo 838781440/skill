@@ -16,7 +16,6 @@
 | 6 | **autonomous-ai-agents** | 自主 AI 分析框架（Prism 系列 + 调度师） | `autonomous-ai-agents/` | `深度分析` / `快速分析` |
 | 7 | **private-board-meeting-skill** 🆕 | 私董会决策框架 — 7位顶级商业顾问结构化评审 | `private-board-meeting-skill/` | `私董会` / `/private-board-meeting` |
 | 8 | **nuwa-skill** 🆕 | 女娲造人 — 输入人名，自动生成人物思维框架 Skill | `nuwa-skill/` | `蒸馏 XX` / `做个 XX 的 skill` |
-| 9 | **validate-idea** 🆕 | 创业想法验证 — 写代码前确认你的想法值不值得做 | `validate-idea/` | `/validate-idea` / `验证一个想法` |
 
 ---
 
@@ -212,45 +211,6 @@
 - `examples/naval-perspective/` → Naval Ravikant
 - `examples/zhang-yiming-perspective/` → 张一鸣
 - `examples/x-mastery-mentor/` → X平台深度用户风格
-
----
-
-### 9. 🆕 validate-idea — 创业想法验证
-
-> **tagline:** 用《Minimalist Entrepreneur》的方法论，在写一行代码之前验证你的商业想法
-
-**安装路径：** `validate-idea/`
-
-**触发方式：**
-- `/validate-idea` 或直接说 `验证一个想法`
-- `帮我验证 XX 这个想法`
-
-**核心理念：** 验证靠卖，不靠造。
-
-**4步流程：**
-
-| 步骤 | 内容 |
-|:----|:------|
-| **① 定义问题** | 谁有这个痛点？现在怎么解决的？痛到什么程度？愿不愿意花钱消痛？ |
-| **② 手动先跑** | 能不能先手把手帮人解决？先收钱干活，再考虑自动化 |
-| **③ 真的会付钱吗？** | 聊过至少10个潜在客户？至少3个说愿意付钱？ |
-| **④ 4问检查** | 能一个周末写完？能让客户生活好一点？客户愿意付钱？能快速得到反馈？ |
-
-**红牌（别造）：**
-- 没人现在在解决这个问题（没有替代方案）
-- 你列不出10个有这个问题的人
-- 唯一验证是"我朋友觉得不错"
-- 你需要先教育用户
-- 你不在目标受众的圈子内
-
-**绿牌（值得搞）：**
-- 已经有人在为劣质方案付费
-- 你手动帮几个人解决了问题，他们很喜欢
-- 社区在抱怨这个问题
-- 一句话能说清楚客户和痛点
-- 你自己就有这个需求
-
-**结论输出：** **Validated** → 推进 MVP / **Needs more validation** → 给具体步骤继续验证 / **Pivot** → 需要大转向
 
 ---
 

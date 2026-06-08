@@ -15,9 +15,8 @@
 | 5 | **agency-agents-zh-main** | 分层智能调度 — 自动匹配领域专家 | `agency-agents-zh-main/` | — |
 | 6 | **autonomous-ai-agents** | 自主 AI 分析框架（Prism 系列 + 调度师） | `autonomous-ai-agents/` | `深度分析` / `快速分析` |
 | 7 | **private-board-meeting-skill** 🆕 | 私董会决策框架 — 7位顶级商业顾问结构化评审 | `private-board-meeting-skill/` | `私董会` / `/private-board-meeting` |
-| 8 | **cangjie-skill** 🆕 | 仓颉造书 — 把一本书蒸馏成可调用的 AI Skills | `cangjie-skill/` | `拆《XX》` / `蒸馏一本书` |
-| 9 | **nuwa-skill** 🆕 | 女娲造人 — 输入人名，自动生成人物思维框架 Skill | `nuwa-skill/` | `蒸馏 XX` / `做个 XX 的 skill` |
-| 10 | **validate-idea** 🆕 | 创业想法验证 — 写代码前确认你的想法值不值得做 | `validate-idea/` | `/validate-idea` / `验证一个想法` |
+| 8 | **nuwa-skill** 🆕 | 女娲造人 — 输入人名，自动生成人物思维框架 Skill | `nuwa-skill/` | `蒸馏 XX` / `做个 XX 的 skill` |
+| 9 | **validate-idea** 🆕 | 创业想法验证 — 写代码前确认你的想法值不值得做 | `validate-idea/` | `/validate-idea` / `验证一个想法` |
 
 ---
 
@@ -169,52 +168,7 @@
 
 ---
 
-### 8. 🆕 cangjie-skill（book2skill） — 仓颉造书
-
-> **tagline:** 把一本书的方法论蒸馏成一组可被 AI agent 直接调用的 skill
-
-**安装路径：** `cangjie-skill/`
-
-**触发方式：**
-- `帮我拆《穷查理宝典》`
-- `把《毛选》蒸馏成 skill`
-- `distill this book into skills: <path>`
-
-**核心方法论 — RIA-TV++ 六阶段流水线：**
-
-| 阶段 | 内容 |
-|:----|:------|
-| **阶段 0** | Adler 整书理解 → BOOK_OVERVIEW.md |
-| **阶段 1** | 5个 agent 并行提取（框架/原则/案例/反例/术语）→ 候选单元池 |
-| **阶段 1.5** | 三重验证筛选（跨域/预测力/独特性）→ 通过率 25-50% |
-| **阶段 2** | RIA++ 构造 skill → 每个单元独立 SKILL.md |
-| **阶段 3** | Zettelkasten 链接 → INDEX.md + 引用图 |
-| **阶段 4** | 压力测试（darwin 兼容）→ test-prompts.json + 回炉淘汰 |
-
-**5个并行提取 Agent：**
-- 框架提取器 — 决策框架、思维模型
-- 原则提取器 — 原则、清单、规则
-- 案例提取器 — 作者亲自用过的实例
-- 反例提取器 — 书中警告的失败模式
-- 术语提取器 — 关键概念词典
-
-**每个 Skill 的 RIA++ 结构：**
-- **R** — 原文引用（≤150字）
-- **I** — 用自己的话重写方法论
-- **A1** — 书中的案例
-- **A2** — 用户在什么情境下会需要
-- **E** — 1-2-3 可执行步骤
-- **B** — 什么时候不适用 / 作者的盲点
-
-**质量红线：**
-- 每个 skill 必须通过全部三重验证
-- 六段缺一不可
-- 必须有包含诱饵测试的 test-prompts.json
-- 不凭记忆拆书，必须有文本
-
----
-
-### 9. 🆕 nuwa-skill（女娲造人） — 人物思维框架蒸馏
+### 8. 🆕 nuwa-skill（女娲造人） — 人物思维框架蒸馏
 
 > **tagline:** 输入人名，自动深挖他的思维框架，生成可调用的人物视角 Skill
 
@@ -261,7 +215,7 @@
 
 ---
 
-### 10. 🆕 validate-idea — 创业想法验证
+### 9. 🆕 validate-idea — 创业想法验证
 
 > **tagline:** 用《Minimalist Entrepreneur》的方法论，在写一行代码之前验证你的商业想法
 
